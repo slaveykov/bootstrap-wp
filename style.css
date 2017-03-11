@@ -1,0 +1,887 @@
+/*
+Theme Name: StrapPress
+Theme URI: http://braginteractive.com/bootstrap
+Author: Brad Williams
+Author URI: http://braginteractive.com
+Description: WordPress theme based off of a toolkit from Twitter. Bootstrap.
+Version: 0.0.1
+*/
+
+/* Apply bootstrap styles */
+@import url('css/bootstrap.css');
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section { display:block; }
+nav ul { list-style:none; }
+blockquote, q { quotes:none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+a { margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent; }
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+del { text-decoration: line-through; }
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+/* tables still need cellspacing="0" in the markup */
+table { border-collapse:collapse; border-spacing:0; }
+hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+input, select { vertical-align:middle; }
+
+/*
+ *
+ * Base Typography 
+ *
+ */
+body { font:13px/1.231 sans-serif; *font-size:small; padding-top: 60px; }
+select, input, textarea, button { font:99% sans-serif; }
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+/*
+ *
+ * Base Styles 
+ *
+ */
+body, select, input, textarea { 
+  /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */ 
+  color: #444; 
+  /* set your base font here, to apply evenly */
+  /* font-family: Georgia, serif;  */   
+}
+/* Headers (h1,h2,etc) have no default font-size or margin,
+   you'll want to define those yourself. */ 
+h1,h2,h3,h4,h5,h6 { font-weight: bold; }
+/* always force a scrollbar in non-IE */ 
+html { overflow-y: scroll; }
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active { outline: none; }
+ul, ol { margin-left: 1.8em; }
+ol { list-style-type: decimal; }
+/* Remove margins for navigation lists */
+nav ul, nav li { margin: 0; } 
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+td, td img { vertical-align: top; } 
+sub { vertical-align: sub; font-size: smaller; }
+sup { vertical-align: super; font-size: smaller; }
+pre { 
+  padding: 15px; 
+  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+  white-space: pre; /* CSS2 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+}
+textarea { overflow: auto; } /* thnx ivannikolic! www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+.ie6 legend, .ie7 legend { margin-left: -7px; } /* thnx ivannikolic! */
+/* align checkboxes, radios, text inputs with their label
+   by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+/* hand cursor on clickable input elements */
+input[type=button], input[type=submit], button { 
+	-moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-transition: all 0.1s linear 0s;
+    background-color: #E6E6E6;
+    background-image: -moz-linear-gradient(center top , #FFFFFF, #FFFFFF 25%, #E6E6E6);
+    background-repeat: no-repeat;
+    border-color: #CCCCCC #CCCCCC #BBBBBB;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: normal;
+    padding: 5px 14px 6px;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	font-weight:bold;
+
+
+cursor: pointer; }
+
+label {
+	font-weight:bold;
+}
+
+/* webkit browsers add a 2px margin outside the chrome of form elements */  
+button, input, select, textarea { margin: 0; }
+/* colors for form validity */
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid { 
+      border-radius: 1px;
+    -moz-box-shadow: 0px 0px 5px red; 
+ -webkit-box-shadow: 0px 0px 5px red; 
+         box-shadow: 0px 0px 5px red;
+}
+.no-boxshadow input:invalid, 
+.no-boxshadow textarea:invalid { background-color: #f0dddd; }
+/* These selection declarations have to be separate.
+   No text-shadow: twitter.com/miketaylr/status/12228805301 
+   Also: hot pink. */
+::-moz-selection{ background: #0069D6; color:#fff; text-shadow: none; }
+::selection { background:#0069D6; color:#fff; text-shadow: none; } 
+/*  j.mp/webkit-tap-highlight-color */
+a:link { -webkit-tap-highlight-color: #FF5E99; } 
+/* make buttons play nice in IE:    
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+button {width: auto; overflow: visible;}
+/* bicubic resizing for non-native sized IMG: 
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+.ie7 img {-ms-interpolation-mode: bicubic;}
+
+/*
+ *
+ * Nonsemantic Base Styles 
+ *
+ */
+/* for image replacement */
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+/* Hide for both screenreaders and browsers
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden { display: none; visibility: hidden; } 
+/* Hide only visually, but have it available for screenreaders 
+   www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden  */
+.visuallyhidden { position: absolute !important;    
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px); }
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+/* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
+.clearfix:before, .clearfix:after {
+  content: "\0020"; display: block; height: 0; visibility: hidden;	
+} 
+.clearfix:after { clear: both; }
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix { zoom: 1; }
+
+/*
+ *
+ * Media queries for responsive design
+ * These follow after primary styles so they will successfully override. 
+ *
+ */
+@media all and (orientation:portrait) { 
+  /* Style adjustments for portrait mode goes here */
+}
+@media all and (orientation:landscape) { 
+  /* Style adjustments for landscape mode goes here */
+}
+/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)  
+   Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {  
+  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you
+     j.mp/textsizeadjust 
+  html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
+}
+
+/*
+ *
+ * Base Print Styles, inline to save the HTTP request
+ *
+ */
+@media print {
+  * { background: transparent !important; color: #444 !important; text-shadow: none !important; }
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a:after { content: " (" attr(href) ")"; } 
+  abbr:after { content: " (" attr(title) ")"; }
+  .ir a:after { content: ""; }  /* Don't show links for images */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */ 
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+
+/*
+ *
+ * Structure
+ *
+ */
+#page {
+	display: block;
+}
+#primary {
+	float: left;
+}
+
+#contentFull {
+	width: 940px;
+	float: left;
+}
+
+#content {
+	width: 650px;
+	float: left;
+	padding: 0 50px 0 0;
+}
+#main .widget-area {
+	float: left;
+	overflow: hidden;
+	width: 220px;
+	border-left: 1px solid #EEE;
+	padding: 0 0 0 19px
+}
+
+article.post {
+	padding: 10px 0 40px 0;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #EEE;
+}
+
+article .page-header{
+	
+	margin-bottom: 17px;
+	border-bottom: 1px solid #DDD;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.more-link {
+	-moz-border-bottom-colors: none;
+    	-moz-border-image: none;
+    	-moz-border-left-colors: none;
+    	-moz-border-right-colors: none;
+    	-moz-border-top-colors: none;
+    	-moz-transition: all 0.1s linear 0s;
+    	border-radius: 4px 4px 4px 4px;
+    	border-style: solid;
+    	border-width: 1px;
+    	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    	cursor: pointer;
+    	display: inline-block;
+    	font-size: 13px;
+    	line-height: normal;
+    	padding: 5px 14px 6px;
+    	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	background-color: #0064CD;
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+	background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+	background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+	background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+	background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+	background-image: linear-gradient(top, #049cdb, #0064cd);
+    	background-repeat: repeat-x;
+    	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    	color: #FFFFFF;
+    	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	float: right;	
+	display: block;
+}
+.more-link:hover {
+	background-position: 0 -15px;
+    	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.entry-content img {
+	border: 1px solid #CCC;
+	padding: 4px;
+}
+
+#homeRow {
+	padding: 0 0 17px 0;
+	border-bottom: 1px solid #EEE;
+	margin: 0 0 27px 0;
+}
+
+#homeBlurb {
+	border-bottom: 1px solid #EEE;
+	border-top: 1px solid #EEE;
+	margin-bottom: 30px;
+}
+
+#homeBlurb h1 {
+	margin-top: 10px;
+}
+
+h1.entry-title {
+	margin-bottom: 0;
+}
+
+.entry-meta {
+	font-size: 11px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	color: #999;
+	line-height: 11px;
+	display: block;
+	border-bottom: 1px dashed #EEE;
+}
+
+/* Widget Area */
+
+#secondary ul li {
+	list-style: none; 
+	padding-top: 5px;
+	border-bottom: 1px dashed #EEE;
+	margin:0 0 10px 0;
+}
+
+#secondary ul {
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+
+
+
+/* Increase the size of the content area for templates without sidebars */
+.full-width #content,
+.image-attachment #content,
+.error404 #content {
+	margin: 0;
+}
+
+/* Alignment */
+.alignleft {
+	display: inline;
+	float: left;
+}
+.alignright {
+	display: inline;
+	float: right;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/*
+ *
+ * Header
+ *
+ */
+#site-title {
+	font-size: 2em;
+	font-weight: bold;
+	margin: .67em 0;
+}
+#site-description {
+	font-size: 1em;
+	font-weight: normal;
+	margin: 0 0 1em;
+}
+
+
+/*
+ *
+ * Menu
+ *
+ */
+#access {
+	background: #eee;
+	display: block;
+	float: left;
+	margin: 0 auto 1em;
+	width: 100%;
+}
+#access ul {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+#access li {
+	float: left;
+	position: relative;
+}
+
+#access li a {
+	padding: 10px 10px 11px;
+}
+
+#access ul ul {
+	box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+	display: none;
+	float: left;
+	position: absolute;
+	top: 40px;
+	left: 0;
+	z-index: 99999;
+}
+#access ul ul ul {
+	left: 100%;
+	top: 0;
+	border-radius: 6px;
+	-webkit-border-radius:6px;
+        -moz-border-radius:6px;
+ 
+}
+#access ul ul a {
+	background: #333;
+	color: #fff;
+	line-height: 1em;
+	padding: .5em .5em .5em 1em;
+	width: 10em;
+	height: auto;
+}
+#access li:hover > a,
+#access ul ul :hover > a {
+	background: #333;
+	color: #fff;
+}
+#access ul ul a:hover {
+	background: #000;
+}
+#access ul li:hover > ul {
+	display: block;
+}
+
+#access form {
+	float: right;
+}
+
+#access li.current-menu-item a, #access li.current_page_item  a {
+	color: #FFFFFF;
+	background: none repeat scroll 0 0 #333333;
+}
+   
+
+
+/*
+ *
+ * Content
+ *
+ */
+#content nav {
+	display: block;
+	overflow: hidden;
+}
+#content nav .nav-previous {
+	float: left;
+	width: 50%;
+}
+#content nav .nav-next {
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+
+#content nav .nav-next a{
+	border-right: 1px solid;
+  	border-right-color: #ddd;
+  	border-right-color: rgba(0, 0, 0, 0.15);
+	float: right;
+ 
+}
+
+#content nav .nav-previous a{
+	border-left: 1px solid;
+  	border-left-color: #ddd;
+  	border-left-color: rgba(0, 0, 0, 0.15);
+ 
+}
+
+#content #nav-above {
+	display: none;
+}
+.paged #content #nav-above,
+.single #content #nav-above {
+	display: block;
+}
+#nav-below {
+	margin: 1em 0 0;
+}
+.page-link {
+	margin: 0 0 1em;
+}
+
+.head-page {
+	background-color: whiteSmoke;
+    	background-image: -moz-linear-gradient(center top , #FFFFFF, #F5F5F5);
+    	background-repeat: repeat-x;
+    	border: 1px solid #DDDDDD;
+    	border-radius: 3px 3px 3px 3px;
+    	box-shadow: 0 1px 0 #FFFFFF inset;
+    	font-size: 14px;
+    	margin: 0 0 18px;
+    	padding: 7px 14px;
+}
+
+
+/*
+ *
+ * Images
+ *
+ */
+/*
+Resize images to fit the main content area.
+- Applies only to images uploaded via WordPress by targeting size-* classes.
+- Other images will be left alone. Use "size-auto" class to apply to other images.
+*/
+img.size-auto,
+img.size-full,
+img.size-large,
+img.size-medium,
+.attachment img,
+.widget-area img {
+	max-width: 100%; /* When images are too wide for containing element, force them to fit. */
+	height: auto; /* Override height to match resized width for correct aspect ratio. */
+}
+img.alignleft {
+	margin-right: 1em;
+}
+img.alignright {
+	margin-left: 1em;
+}
+.wp-caption {
+	padding: .5em;
+	text-align: center;
+}
+.wp-caption img {
+	margin: .25em;
+}
+.wp-caption .wp-caption-text {
+	margin: .5em;
+}
+
+/* Forms - Class for labelling required form items */
+.required {
+	color: #cc0033;
+}
+
+
+/*
+ *
+ * Comments
+ *
+ */
+article.comment {
+	display: block;
+}
+#respond input[type=text] {
+	float: left;
+	margin: 0 1em 0 0;
+	width: 60%;
+}
+#respond .comment-form-comment label {
+	display: none;
+}
+#respond textarea {
+	margin: 0 1em 1em 0;
+	float: left;
+	width: 80%;
+}
+#respond .form-allowed-tags {
+	clear: both;
+	width: 80%;
+}
+#respond .form-allowed-tags code {
+	display: block;
+}
+
+
+/*
+ *
+ * Footer
+ *
+ */
+#colophon {
+	padding: 1em 0 0;
+	background-color: #222222;
+   	 background-image: -moz-linear-gradient(center top , #333333, #222222);
+    	background-repeat: repeat-x;
+   	 box-shadow: 6px -3px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+	}
+
+.footer {
+	clear: both;
+	display: block;
+	width: 100%;
+}
+
+.footer ul {
+	list-style: none;
+	margin: 0;
+	padding: 0 0 3px 0;
+}
+
+.footer ul li {
+	list-style: none;
+	padding: 6px 0 4px 0;
+}
+
+/*
+ *
+ * Comments
+ *
+ */
+
+h2#comments-title{
+	font-size: 14px;
+	padding: 7px 14px;
+	margin: 0 0 18px;
+	background-color: whiteSmoke;
+	background-repeat: repeat-x;
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5));
+	background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
+	background-image: -ms-linear-gradient(top, #ffffff, #f5f5f5);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f5f5f5));
+	background-image: -webkit-linear-gradient(top, #ffffff, #f5f5f5);
+	background-image: -o-linear-gradient(top, #ffffff, #f5f5f5);
+	background-image: linear-gradient(top, #ffffff, #f5f5f5);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
+	border: 1px solid #DDD;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0 1px 0 #ffffff;
+	-moz-box-shadow: inset 0 1px 0 #ffffff;
+	box-shadow: inset 0 1px 0 #ffffff;
+}
+
+ol.commentlist { list-style:none; margin:0 0 1em; padding:0; text-indent:0; }
+ol.commentlist li { }
+ol.commentlist li.alt { }
+ol.commentlist li.bypostauthor {background:#C7EEFE;}
+ol.commentlist li.byuser {}
+ol.commentlist li.comment-author-admin {background:#C7EEFE;}
+ol.commentlist li.comment { border-bottom:1px dotted #666; padding:1em; }
+ol.commentlist li.comment div.comment-author {}
+ol.commentlist li.comment div.vcard { font:normal 16px georgia,times,serif; }
+ol.commentlist li.comment div.vcard cite.fn { font-style:normal; }
+ol.commentlist li.comment div.vcard cite.fn a.url {}
+ol.commentlist li.comment div.vcard img.avatar { border:5px solid #ccc; float:right; margin:0 0 1em 1em; }
+ol.commentlist li.comment div.vcard img.avatar-32 {}
+ol.commentlist li.comment div.vcard img.photo {}
+ol.commentlist li.comment div.vcard span.says {}
+ol.commentlist li.comment div.commentmetadata {}
+ol.commentlist li.comment div.comment-meta { font-size:9px; }
+ol.commentlist li.comment div.comment-meta a { color:#ccc; }
+ol.commentlist li.comment p { font-size:11px; margin:0 0 1em; }
+ol.commentlist li.comment ul { font-size:11px; list-style:square; margin:0 0 1em 2em; }
+ol.commentlist li.comment div.reply { font-size:11px; }
+ol.commentlist li.comment div.reply a { 
+	-moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-transition: all 0.1s linear 0s;
+    background-color: #E6E6E6;
+    background-image: -moz-linear-gradient(center top , #FFFFFF, #FFFFFF 25%, #E6E6E6);
+    background-repeat: no-repeat;
+    border-color: #CCCCCC #CCCCCC #BBBBBB;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: normal;
+    padding: 5px 14px 6px;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	font-weight:bold; }
+ol.commentlist li.comment ul.children { list-style:none; margin:1em 0 0; text-indent:0; }
+ol.commentlist li.comment ul.children li {}
+ol.commentlist li.comment ul.children li.alt {}
+ol.commentlist li.comment ul.children li.bypostauthor {background:#f5f7f8;}
+ol.commentlist li.comment ul.children li.byuser {}
+ol.commentlist li.comment ul.children li.comment {}
+ol.commentlist li.comment ul.children li.comment-author-admin {background:#f5f7f8;}
+ol.commentlist li.comment ul.children li.depth-2 { border-left:5px solid #555; margin:0 0 .25em .25em; }
+ol.commentlist li.comment ul.children li.depth-3 { border-left:5px solid #999; margin:0 0 .25em .25em; }
+ol.commentlist li.comment ul.children li.depth-4 { border-left:5px solid #bbb; margin:0 0 .25em .25em; }
+ol.commentlist li.comment ul.children li.depth-5 {}
+ol.commentlist li.comment ul.children li.odd {}
+ol.commentlist li.even { background:#fff; }
+ol.commentlist li.odd { background:#f6f6f6; }
+ol.commentlist li.parent { border-left:5px solid #111; }
+ol.commentlist li.thread-alt { }
+ol.commentlist li.thread-even {}
+ol.commentlist li.thread-odd {}
+
+textarea#comment {background:#ffffff;}
+textarea#comment:focus {background:#ffffff;}
+/*textarea#comment {background:#ffffff url(http://braginteractive.com/wp-content/uploads/2011/11/google-plus.jpg) 100% 100% no-repeat;}*/
+
+.comment-form-author, .comment-form-email, .comment-form-url {
+	width: 400px;
+	float: left;
+}
+
+.comment-form-author label, .comment-form-email label, .comment-form-url label {
+	text-align: left;
+	width: 80px;
+}
+
+
+/*--Main Project Content Styles Start here --*/  
+#projectPage {
+	width: 100%;
+}
+
+#main-content{  
+    padding: 50px 50px 28px 50px;  
+    background-color: #000;  
+    border-bottom: 1px #696969 solid;  
+    border-left: 1px #696969 solid;  
+    border-right: 1px #696969 solid;  
+    /* Fallback for web browsers that doesn't support RGBa */  
+    background: rgb(0, 0, 0);  
+    /* RGBa with 0.3 opacity */  
+    background: rgba(0, 0, 0, 0.3);  
+    font-family: Helvetica, Arial, sans-serif;  
+    font-size: 12px;  
+    color:#c7c7c7;  
+    line-height: 16px;  
+}  
+#main-content a:hover{  
+    color: #fff;  
+}  
+#layout-controls{  
+    margin-bottom: 15px; 
+	width: 100%;	
+	display: block;
+	float: left;
+	margin-left: 23px;
+}  
+#layout-controls span{  
+    width: 20px;  
+    height: 26px;  
+    display: block;  
+    background-image: url('http://code-pal.com/examples/create-a-multilayout-portfolio-with-wordpress-and-jquery/images/layout-icons.png'); 
+    -moz-transition: all 0.3s ease-in-out; 
+    -webkit-transition: all 0.3s ease-in-out; 
+    -o-transition: all 0.3s ease-in-out; 
+    transition: all 0.3s ease-in-out; 
+    text-indent: -99999px; 
+} 
+#layout-controls a{ 
+    width: 20px; 
+    height: 26px; 
+    display: block; 
+    float: left; 
+    background-image: url('http://code-pal.com/examples/create-a-multilayout-portfolio-with-wordpress-and-jquery/images/layout-icons.png');  
+    margin-right: 10px;  
+    display: inline;  
+}  
+#layout-controls a.grid span{  
+    background-position: left 0;  
+}  
+#layout-controls a.grid{  
+    background-position: left -26px;  
+}  
+#layout-controls a.list span{  
+    background-position: rightright 0;  
+}  
+#layout-controls a.list{  
+    background-position: rightright -26px;  
+}  
+#layout-controls a:hover span{  
+    opacity: 0; /* other browsers */  
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0); /* this works in IE6, IE7, and IE8 */  
+}  
+
+/*-------------General Folio Styles Starts Here---------------*/  
+ul#folio li a{  
+    -moz-transition: all 0.3s ease-in-out;  
+    -webkit-transition: all 0.3s ease-in-out;  
+    -o-transition: all 0.3s ease-in-out;  
+    transition: all 0.3s ease-in-out;  
+}  
+ul#folio li{  
+    /* Fallback for web browsers that doesn't support RGBa */  
+    background: rgb(0, 0, 0);  
+    /* RGBa with 0.3 opacity */  
+    background: rgba(0, 0, 0, 0.3);  
+    padding: 20px;  
+    border: 1px #4c4c4c solid;  
+    margin-bottom: 22px;  
+    -moz-transition: all 0.3s ease-in-out;  
+    -webkit-transition: all 0.3s ease-in-out;  
+    -o-transition: all 0.3s ease-in-out;  
+    transition: all 0.3s ease-in-out;  
+}  
+ul#folio li:hover{  
+    /* Fallback for web browsers that doesn't support RGBa */  
+    background: rgb(0, 0, 0);  
+    /* RGBa with 0.3 opacity */  
+    background: rgba(0, 0, 0, 0.1);  
+}  
+ul#folio li .image{  
+    text-align: center;  
+}  
+ul#folio li .image span{  
+    width: 158px;  
+    height: 116px;  
+    display: block;  
+    overflow: hidden;  
+    background-color: #fff;  
+    margin-bottom: 10px;  
+}  
+ul#folio li .image span a{  
+    width: 158px;  
+    height: 116px;  
+    display: block;  
+}  
+ul#folio li .image a{  
+    font-weight: bold;  
+}  
+
+
+/*------------------Grid Layout Starts Here-------------------*/  
+ul#folio.grid li{  
+    width: 158px;  
+    height: 130px;  
+    float: left;  
+    margin-right: 19px;  
+    display: inline;  
+}  
+ul#folio.grid li .content{  
+    display: none;  
+}  
+ul#folio.grid li .image span a{  
+    width: 158px;  
+    height: 116px;  
+    display: block;  
+}  
+ul#folio.grid li.rightmost{  
+    margin-right: 0;  
+}  
+
+
+/*------------------List Layout Starts Here-------------------*/  
+ul#folio.list li{  
+    display: block;
+    float: left;  
+}  
+ul#folio.list li .image,ul#folio li.details .image{  
+    width: 158px;  
+    height: 130px;  
+    float:left;  
+}  
+ul#folio.list li .content{  
+    float: left;  
+    padding: 0 10px 0 40px;  
+    width: 598px;  
+}  
+ul#folio.list li .content h2,ul#folio li.details .content h2{  
+    font-size: 24px;  
+    color: #C2FC48;  
+    margin-bottom: 6px;  
+    font-family: Georgia, Arial, Helvetica, sans-serif;  
+}  
+ul#folio.list li .content span.tags,ul#folio li.details .content span.tags{  
+    color: #fff;  
+    font-size: 11px;  
+    font-style: italic;  
+    margin-bottom: 10px;  
+    display: block;  
+}  
